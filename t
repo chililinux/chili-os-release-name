@@ -1,8 +1,8 @@
-!/usr/bin/env bash
+#!/usr/bin/env bash
 # -*- coding: utf-8 -*-
 # shellcheck shell=bash disable=SC1091,SC2039,SC2166
 #
-#  /usr/share/libalpm/scripts/chili-name.sh
+#  t
 #  Created: 2024/11/05 - 22:17
 #  Altered: 2024/11/05 - 22:17
 #
@@ -29,31 +29,56 @@
 #  (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF
 #  THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 ##############################################################################
-conf_file='/etc/issue'
-sed -i 's|^Manjaro Linux|Chili Linux, based on LFS|g' "$conf_file"
-sed -i 's|^BigLinux, based in Manjaro Linux|Chili Linux, based on LFS|g' "$conf_file"
+#export LANGUAGE=pt_BR
+export TEXTDOMAINDIR=/usr/share/locale
+export TEXTDOMAIN=t
 
-conf_file='/usr/lib/os-release'
-sed -i 's|^ *\bNAME\b *=.*|NAME="Chili Linux based on LFS"|' "$conf_file"
-sed -i 's|^ *\bPRETTY_NAME\b *=.*|PRETTY_NAME="ChiliLinux based on LFS"|' "$conf_file"
-sed -i 's|^ *\bHOME_URL\b *=.*|HOME_URL="https://chililinux.com"|' "$conf_file"
-sed -i 's|^ *\bDOCUMENTATION_URL\b *=.*||' "$conf_file"
-sed -i 's|^ *\bSUPPORT_URL\b *=.*|SUPPORT_URL="https://t.me/chililinux"|' "$conf_file"
-sed -i 's|^ *\LOGO\b *=.*|LOGO="chililinux-menu"|' "$conf_file"
-sed -i 's|^ *\ID\b *=.*|ID="chililinux"|' "$conf_file"
-sed -i 's|^ *\bBUG_REPORT_URL\b *=.*|BUG_REPORT_URL="https://github.com/chililinux"|' "$conf_file"
-sed -i 's|^ *\bPRIVACY_POLICY_URL=.*||' "$conf_file"
+# Definir a variável de controle para restaurar a formatação original
+reset=$(tput sgr0)
 
-[[ -e "$conf_file" ]] && ln -sf "$conf_file" /etc/os-release
+# Definir os estilos de texto como variáveis
+bold=$(tput bold)
+underline=$(tput smul)   # Início do sublinhado
+nounderline=$(tput rmul) # Fim do sublinhado
+reverse=$(tput rev)      # Inverte as cores de fundo e texto
 
-# Configuração adicional para corrigir inserções indesejadas no GRUB
-conf_file='/etc/default/grub'
-sed -i 's|^GRUB_THEME=.*|GRUB_THEME="/boot/grub/themes/chili/theme.txt"|' "$conf_file"
-sed -i 's|^GRUB_DISTRIBUTOR=.*|GRUB_DISTRIBUTOR="Chili"|' "$conf_file"
+# Definir as cores ANSI como variáveis
+black=$(tput bold)$(tput setaf 0)
+red=$(tput bold)$(tput setaf 196)
+green=$(tput bold)$(tput setaf 2)
+yellow=$(tput bold)$(tput setaf 3)
+blue=$(tput setaf 4)
+pink=$(tput setaf 5)
+magenta=$(tput setaf 5)
+cyan=$(tput setaf 6)
+white=$(tput setaf 7)
+gray=$(tput setaf 8)
+orange=$(tput setaf 202)
+purple=$(tput setaf 125)
+violet=$(tput setaf 61)
+light_red=$(tput setaf 9)
+light_green=$(tput setaf 10)
+light_yellow=$(tput setaf 11)
+light_blue=$(tput setaf 12)
+light_magenta=$(tput setaf 13)
+light_cyan=$(tput setaf 14)
+bright_white=$(tput setaf 15)
 
-# Atualiza a configuração do GRUB, caso o comando exista
-if command -v update-grub &>/dev/null; then
-	update-grub
-elif command -v grub-mkconfig &>/dev/null; then
-	grub-mkconfig -o /boot/grub/grub.cfg
-fi
+#debug
+export PS4='${red}${0##*/}${green}[$FUNCNAME]${pink}[$LINENO]${reset}'
+#set -x
+#set -e
+shopt -s extglob
+
+#system
+declare APP="${0##*/}"
+declare _VERSION_="1.0.0-20241105"
+declare distro="$(uname -n)"
+declare DEPENDENCIES=(tput)
+source /usr/share/fetch/core.sh
+
+MostraErro() {
+  echo "erro: ${red}$1${reset} => comando: ${cyan}'$2'${reset} => result=${yellow}$3${reset}"
+}
+trap 'MostraErro "$APP[$FUNCNAME][$LINENO]" "$BASH_COMMAND" "$?"; exit 1' ERR
+

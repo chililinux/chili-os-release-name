@@ -44,6 +44,7 @@ sed -i 's|^ *\ID\b *=.*|ID="chililinux"|' "$conf_file"
 sed -i 's|^ *\bBUG_REPORT_URL\b *=.*|BUG_REPORT_URL="https://github.com/chililinux"|' "$conf_file"
 sed -i 's|^ *\bPRIVACY_POLICY_URL=.*||' "$conf_file"
 
+[[ -e "$conf_file" ]] && rm -f /etc/os-release
 [[ -e "$conf_file" ]] && ln -sf "$conf_file" /etc/os-release
 
 # Configuração adicional para corrigir inserções indesejadas no GRUB

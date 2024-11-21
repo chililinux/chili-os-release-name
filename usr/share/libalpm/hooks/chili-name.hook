@@ -13,4 +13,3 @@ Target = manjaro-release
 Description = Configure system name e os-release for chililinux
 When = PostTransaction
 Exec = /usr/share/libalpm/scripts/chili-name.sh
-NeedsTargets

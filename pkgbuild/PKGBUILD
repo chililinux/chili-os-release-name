@@ -1,6 +1,6 @@
 # Maintainer: Vilmar Catafesta <vcatafesta@gmail.com>
 
-pkgname=chili-name
+pkgname=chili-os-release-name
 pkgdesc="Configure system name e os-release for chililinux"
 depends=('grub' 'filesystem')
 #makedepends=('')

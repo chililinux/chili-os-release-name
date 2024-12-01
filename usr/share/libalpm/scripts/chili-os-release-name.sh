@@ -2,9 +2,9 @@
 # -*- coding: utf-8 -*-
 # shellcheck shell=bash disable=SC1091,SC2039,SC2166
 #
-#  /usr/share/libalpm/scripts/chili-name.sh
+#  /usr/share/libalpm/scripts/chili-os-release-name.sh
 #  Created: 2024/11/05 - 22:17
-#  Altered: 2024/11/05 - 22:17
+#  Altered: 2024/12/01 - 11:45
 #
 #  Copyright (c) 2024-2024, Vilmar Catafesta <vcatafesta@gmail.com>
 #  All rights reserved.

@@ -30,12 +30,12 @@
 #  THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 ##############################################################################
 conf_file='/etc/issue'
-sed -i 's|^Manjaro Linux|Chili Linux, based on LFS|g' "$conf_file"
-sed -i 's|^BigLinux, based in Manjaro Linux|Chili Linux, based on LFS|g' "$conf_file"
+sed -i 's|^Manjaro Linux|Chili Linux, based on LFS rolling|g' "$conf_file"
+sed -i 's|^BigLinux, based in Manjaro Linux|Chili Linux, based on LFS rolling|g' "$conf_file"
 
 conf_file='/usr/lib/os-release'
-sed -i 's|^ *\bNAME\b *=.*|NAME="Chili Linux based on LFS"|' "$conf_file"
-sed -i 's|^ *\bPRETTY_NAME\b *=.*|PRETTY_NAME="ChiliLinux based on LFS"|' "$conf_file"
+sed -i 's|^ *\bNAME\b *=.*|NAME="Chili Linux based on LFS rolling"|' "$conf_file"
+sed -i 's|^ *\bPRETTY_NAME\b *=.*|PRETTY_NAME="Chili Linux based on LFS rolling"|' "$conf_file"
 sed -i 's|^ *\bHOME_URL\b *=.*|HOME_URL="https://chililinux.com"|' "$conf_file"
 sed -i 's|^ *\bDOCUMENTATION_URL\b *=.*||' "$conf_file"
 sed -i 's|^ *\bSUPPORT_URL\b *=.*|SUPPORT_URL="https://t.me/chililinux"|' "$conf_file"

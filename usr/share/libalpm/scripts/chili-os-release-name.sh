@@ -5,8 +5,9 @@
 #  /usr/share/libalpm/scripts/chili-os-release-name.sh
 #  Created: 2024/11/05 - 22:17
 #  Altered: 2024/12/01 - 11:45
+#  Updated: sex 04 abr 2025 07:29:23 -04
 #
-#  Copyright (c) 2024-2024, Vilmar Catafesta <vcatafesta@gmail.com>
+#  Copyright (c) 2024-2025, Vilmar Catafesta <vcatafesta@gmail.com>
 #  All rights reserved.
 #
 #  Redistribution and use in source and binary forms, with or without
@@ -30,12 +31,12 @@
 #  THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 ##############################################################################
 conf_file='/etc/issue'
-sed -i 's|^Manjaro Linux|Chili Linux, based on LFS rolling|g' "$conf_file"
-sed -i 's|^BigLinux, based in Manjaro Linux|Chili Linux, based on LFS rolling|g' "$conf_file"
+sed -i 's|^Manjaro Linux|Chili Linux, based on Arch rolling|g' "$conf_file"
+sed -i 's|^BigLinux, based in Manjaro Linux|Chili Linux, based on Arch rolling|g' "$conf_file"
 
 conf_file='/usr/lib/os-release'
-sed -i 's|^ *\bNAME\b *=.*|NAME="Chili Linux based on LFS rolling"|' "$conf_file"
-sed -i 's|^ *\bPRETTY_NAME\b *=.*|PRETTY_NAME="Chili Linux based on LFS rolling"|' "$conf_file"
+sed -i 's|^ *\bNAME\b *=.*|NAME="Chili Linux based on Arch rolling"|' "$conf_file"
+sed -i 's|^ *\bPRETTY_NAME\b *=.*|PRETTY_NAME="Chili Linux based on Arch rolling"|' "$conf_file"
 sed -i 's|^ *\bHOME_URL\b *=.*|HOME_URL="https://chililinux.com"|' "$conf_file"
 sed -i 's|^ *\bDOCUMENTATION_URL\b *=.*||' "$conf_file"
 sed -i 's|^ *\bSUPPORT_URL\b *=.*|SUPPORT_URL="https://t.me/chililinux"|' "$conf_file"

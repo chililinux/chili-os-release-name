@@ -1,13 +1,10 @@
 # Maintainer: Vilmar Catafesta <vcatafesta@gmail.com>
 
 pkgname=chili-os-release-name
-pkgdesc="Configure system name e os-release for chililinux"
-depends=('grub' 'filesystem')
-#makedepends=('')
-#optdepends=('')
-conflicts=('biglinux-name' 'bigcommunity-name')
-#provides=('')
-#replaces=('')
+pkgdesc="Configure system name e os-release for ChiliLinux"
+replaces=('biglinux-name' 'bigcommunity-name')
+depends=()
+optdepends=('grub' 'filesystem')
 pkgver=$(date +%Y%m%d)
 pkgrel=$(date +%H%M)
 arch=('any')
@@ -22,24 +19,6 @@ if [ -e "${pkgname}.install" ]; then
 elif [ -e "pkgbuild.install" ]; then
 	install=pkgbuild.install
 fi
-
-prepare() {
-	cd "${srcdir}/${pkgname}"
-	# Add any preparation steps here, if needed
-	# For example: patch -p1 < "${srcdir}/patch-file.patch"
-}
-
-build() {
-	cd "${srcdir}/${pkgname}"
-	# Add build steps here, if needed
-	# For example: make
-}
-
-check() {
-	cd "${srcdir}/${pkgname}"
-	# Add check/test steps here, if needed
-	# For example: make check
-}
 
 package() {
 	cd "${srcdir}/${pkgname}"
